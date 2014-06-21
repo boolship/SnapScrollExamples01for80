@@ -1,0 +1,142 @@
+﻿<Page
+    x:Class="SnapScrollExamples01for80.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SnapScrollExamples01for80"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <DataTemplate x:Key="ListViewTileTemplate">
+            <Rectangle x:Name="ItemRectangle"
+                       Fill="Coral"
+                       Height="300"
+                       Width="500"
+                       />
+        </DataTemplate>
+        <Style x:Key="MyListViewTileStyle"  TargetType="ListViewItem">
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="Background" Value="DarkOliveGreen" />
+            <Setter Property="Height" Value="400" />
+            <Setter Property="Width" Value="600" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Margin" Value="0,0,8,8" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="TabNavigation" Value="Local" />
+        </Style>
+
+        <DataTemplate x:Key="GridViewTileTemplate">
+            <Rectangle x:Name="ItemRectangle"
+                       Fill="Coral"
+                       Height="100"
+                       Width="180"
+                       />
+        </DataTemplate>
+        <Style x:Key="MyGridViewTileStyle"  TargetType="GridViewItem">
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="Background" Value="DarkOliveGreen" />
+            <Setter Property="Height" Value="200" />
+            <Setter Property="Width" Value="270" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Margin" Value="0,0,8,8" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="TabNavigation" Value="Local" />
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--## Left to Right ## :: ## Up and Down ##
+            NormalGridView      :: NormalListView
+            HorizontalListView  :: VerticalGridView
+            ## Left to Right ## :: ## Up and Down ##
+        -->
+        <!--ShowsScrollingPlaceholders="False"-->
+        <GridView x:Name="NormalGridView"
+                  Grid.Row="0"
+                  Grid.Column="0"
+                  ItemTemplate="{StaticResource GridViewTileTemplate}"
+                  ItemContainerStyle="{StaticResource MyGridViewTileStyle}"
+                  Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                  BorderBrush="DeepPink"
+                  BorderThickness="2"
+                  
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                  SelectionMode="None">
+
+        </GridView>
+
+        <!--ShowsScrollingPlaceholders="False"-->
+        <GridView x:Name="VerticalGridView"
+                  Grid.Row="1"
+                  Grid.Column="1"
+                  ItemTemplate="{StaticResource GridViewTileTemplate}"
+                  ItemContainerStyle="{StaticResource MyGridViewTileStyle}"
+                  Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                  BorderBrush="DeepPink"
+                  BorderThickness="2"
+                  
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                  ScrollViewer.VerticalScrollMode="Enabled"
+                  ScrollViewer.HorizontalScrollMode="Disabled"
+                  SelectionMode="None">
+            <GridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapGrid Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </GridView.ItemsPanel>
+        </GridView>
+
+        <!--ShowsScrollingPlaceholders="False"-->
+        <ListView x:Name="NormalListView"
+                  Grid.Row="0"
+                  Grid.Column="1"
+                  ItemTemplate="{StaticResource ListViewTileTemplate}"
+                  ItemContainerStyle="{StaticResource MyListViewTileStyle}"
+                  Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                  BorderBrush="DeepPink"
+                  BorderThickness="2"
+                 
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                  SelectionMode="None">
+        </ListView>
+
+        <!--ShowsScrollingPlaceholders="False"-->
+        <ListView x:Name="HorizontalListView"
+                  Grid.Row="1"
+                  Grid.Column="0"
+                  ItemTemplate="{StaticResource ListViewTileTemplate}"
+                  ItemContainerStyle="{StaticResource MyListViewTileStyle}"                  
+                  Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                  BorderBrush="DeepPink"
+                  BorderThickness="2"
+                  
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                  ScrollViewer.VerticalScrollMode="Disabled"
+                  ScrollViewer.HorizontalScrollMode="Enabled"
+                  SelectionMode="None">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+
+        </ListView>
+    </Grid>
+</Page>
