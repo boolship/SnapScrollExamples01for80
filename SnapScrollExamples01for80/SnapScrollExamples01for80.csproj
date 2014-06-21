@@ -106,6 +106,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GridViewData.cs" />
+    <Compile Include="Item.cs" />
+    <Compile Include="ItemCollection.cs" />
+    <Compile Include="ListViewData.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
