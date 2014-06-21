@@ -8,18 +8,21 @@
     mc:Ignorable="d">
 
     <Page.Resources>
+        <!--Height="200" Width="400"-->
         <DataTemplate x:Key="ListViewTileTemplate">
             <Rectangle x:Name="ItemRectangle"
                        Fill="Coral"
-                       Height="300"
-                       Width="500"
+                       Height="200"
+                       Width="400"
                        />
         </DataTemplate>
+        <!--<Setter Property="Height" Value="300" />
+        <Setter Property="Width" Value="500" />-->
         <Style x:Key="MyListViewTileStyle"  TargetType="ListViewItem">
             <Setter Property="FontFamily" Value="Segoe UI" />
             <Setter Property="Background" Value="DarkOliveGreen" />
-            <Setter Property="Height" Value="400" />
-            <Setter Property="Width" Value="600" />
+            <Setter Property="Height" Value="300" />
+            <Setter Property="Width" Value="500" />
             <Setter Property="Padding" Value="0" />
             <Setter Property="Margin" Value="0,0,8,8" />
             <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -28,18 +31,21 @@
             <Setter Property="TabNavigation" Value="Local" />
         </Style>
 
+        <!--Height="80" Width="160"-->
         <DataTemplate x:Key="GridViewTileTemplate">
             <Rectangle x:Name="ItemRectangle"
                        Fill="Coral"
-                       Height="100"
-                       Width="180"
+                       Height="80"
+                       Width="160"
                        />
         </DataTemplate>
+        <!--<Setter Property="Height" Value="120" />
+        <Setter Property="Width" Value="200" />-->
         <Style x:Key="MyGridViewTileStyle"  TargetType="GridViewItem">
             <Setter Property="FontFamily" Value="Segoe UI" />
             <Setter Property="Background" Value="DarkOliveGreen" />
-            <Setter Property="Height" Value="200" />
-            <Setter Property="Width" Value="270" />
+            <Setter Property="Height" Value="120" />
+            <Setter Property="Width" Value="200" />
             <Setter Property="Padding" Value="0" />
             <Setter Property="Margin" Value="0,0,8,8" />
             <Setter Property="HorizontalContentAlignment" Value="Center" />
