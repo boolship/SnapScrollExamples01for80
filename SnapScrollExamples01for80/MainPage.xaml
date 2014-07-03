@@ -165,6 +165,7 @@
         </Style>
 
         <!-- ReSharper restore UnusedMember.Local -->
+        
     </Page.Resources>
 
     <!--WinRT8.1 *only* Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"-->
@@ -293,7 +294,15 @@
                   ScrollViewer.VerticalScrollMode="Disabled"
                   ScrollViewer.HorizontalScrollMode="Enabled">
         </FlipView>
-
+        <local:FlipViewIndicator x:Name="MyFlipViewIndicatorUx"  
+                                 Flipview="{Binding ElementName=NormalFlipView}"
+                                 Grid.Row="0"
+                                 Grid.Column="2"
+                                 Visibility="Visible"
+                                 VerticalAlignment="Top"
+                                 HorizontalAlignment="Center"
+                                 Margin="8"/>
+        
         <!--FlipView-->
         <FlipView x:Name="VerticalFlipView"
                   Grid.Row="1"
@@ -314,7 +323,15 @@
                 </ItemsPanelTemplate>
             </FlipView.ItemsPanel>
         </FlipView>
-
+        <local:FlipViewIndicator x:Name="MyVerticalFlipViewIndicatorUx" 
+                                 Flipview="{Binding ElementName=VerticalFlipView}"
+                                 Grid.Row="1"
+                                 Grid.Column="2"
+                                 Visibility="Visible"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center"
+                                 Margin="8"/>
+        
         <!--ScrollViewer-->
         <ScrollViewer x:Name="NormalScrollViewer"
                       Grid.Row="2"
