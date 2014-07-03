@@ -19,14 +19,14 @@ namespace SnapScrollExamples01for80
             DefaultStyleKey = typeof(FlipViewIndicator);
         }
 
-        public FlipView FlipViewTarget
+        public FlipView FlipView
         {
-            get { return (FlipView) GetValue(FlipViewTargetProperty); }
-            set { SetValue(FlipViewTargetProperty, value); }
+            get { return (FlipView) GetValue(FlipViewProperty); }
+            set { SetValue(FlipViewProperty, value); }
         }
 
-        public static readonly DependencyProperty FlipViewTargetProperty =
-            DependencyProperty.Register("FlipViewTarget", typeof (FlipView), typeof (FlipViewIndicator),
+        public static readonly DependencyProperty FlipViewProperty =
+            DependencyProperty.Register("FlipView", typeof (FlipView), typeof (FlipViewIndicator),
                 new PropertyMetadata(null, FlipView_Changed));
 
         private static void FlipView_Changed(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -49,7 +49,7 @@ namespace SnapScrollExamples01for80
                 if (source != null)
                 {
                     var count = source.Count;
-                    var availableSize = indicator.FlipViewTarget.ActualWidth - count*2; // margin 2
+                    var availableSize = indicator.FlipView.ActualWidth - count*2; // margin 2
                     IndicatorItemSizes.Add(flipView.Name, Math.Floor(availableSize/count));
                 }
             }

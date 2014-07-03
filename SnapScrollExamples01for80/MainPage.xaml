@@ -295,7 +295,7 @@
                   ScrollViewer.HorizontalScrollMode="Enabled">
         </FlipView>
         <local:FlipViewIndicator x:Name="MyFlipViewIndicatorUx"  
-                                 FlipViewTarget="{Binding ElementName=NormalFlipView}"
+                                 FlipView="{Binding ElementName=NormalFlipView}"
                                  Grid.Row="0"
                                  Grid.Column="2"
                                  Visibility="Visible"
@@ -324,7 +324,7 @@
             </FlipView.ItemsPanel>
         </FlipView>
         <local:FlipViewIndicator x:Name="MyVerticalFlipViewIndicatorUx" 
-                                 FlipViewTarget="{Binding ElementName=VerticalFlipView}"
+                                 FlipView="{Binding ElementName=VerticalFlipView}"
                                  Grid.Row="1"
                                  Grid.Column="2"
                                  Visibility="Visible"
