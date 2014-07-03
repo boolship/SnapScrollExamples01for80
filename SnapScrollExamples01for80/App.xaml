@@ -9,7 +9,7 @@
             <ResourceDictionary.MergedDictionaries>
 
                 <!--TODO fixme008 FlipViewIndicatorDictionary-->
-                <ResourceDictionary Source="FlipViewIndicatorDictionary.xaml"/>
+                <!--<ResourceDictionary Source="FlipViewIndicatorDictionary.xaml"/>-->
                 
                 <!-- 
                     Styles that define common aspects of the platform look and feel

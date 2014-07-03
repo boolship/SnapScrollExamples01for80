@@ -166,6 +166,272 @@
 
         <!-- ReSharper restore UnusedMember.Local -->
         
+        <!--FlipViewIndicator-->
+        <Style x:Key="FlipViewIndicatorItemStyle" 
+           TargetType="ListBoxItem">
+            <!--TODO fixme008 dynamic size or wrap items-->
+            <!--<Setter Property="Width" Value="48" />-->
+            <!--<Setter Property="Width" Value="16" />-->
+            <Setter Property="Width" Value="8" />
+            <Setter Property="Height" Value="6" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Grid Background="{TemplateBinding Background}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="PointerOver" />
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="SelectionStates">
+                                    <VisualState x:Name="Unselected" />
+                                    <VisualState x:Name="Selected">
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="fillColor"
+                                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                        BeginTime="00:00:00"
+                                                        Duration="0"
+                                                        To="Black" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="SelectedUnfocused">
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="fillColor"
+                                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                        BeginTime="00:00:00"
+                                                        Duration="0"
+                                                        To="Black" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="SelectedPressed">
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="fillColor" 
+                                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                        BeginTime="00:00:00"
+                                                        Duration="0"
+                                                        To="Black" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="SelectedPointerOver">
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="fillColor"
+                                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                        BeginTime="00:00:00"
+                                                        Duration="0"
+                                                        To="Black" />
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Rectangle x:Name="fillColor"
+                                   IsHitTestVisible="False"
+                                   Fill="Gray"
+                                   Margin="2,0,0,0" />
+                            <!--Margin="6 0"-->
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="FlipViewIndicatorStyle"
+               TargetType="local:FlipViewIndicator">
+            <Setter Property="ItemContainerStyle" Value="{StaticResource FlipViewIndicatorItemStyle}" />
+            <Setter Property="Height" Value="16" />
+            <Setter Property="Foreground" Value="{StaticResource ListBoxForegroundThemeBrush}" />
+            <Setter Property="Background" Value="{StaticResource ListBoxBackgroundThemeBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource ListBoxBorderThemeBrush}" />
+            <Setter Property="BorderThickness" Value="{StaticResource ListBoxBorderThemeThickness}" />
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+            <Setter Property="ScrollViewer.HorizontalScrollMode" Value="Disabled" />
+            <Setter Property="ScrollViewer.IsHorizontalRailEnabled" Value="True" />
+            <Setter Property="ScrollViewer.VerticalScrollMode" Value="Enabled" />
+            <Setter Property="ScrollViewer.IsVerticalRailEnabled" Value="True" />
+            <Setter Property="ScrollViewer.ZoomMode" Value="Disabled" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="TabNavigation" Value="Once" />
+            <Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}" />
+            <Setter Property="FontSize" Value="{StaticResource ControlContentThemeFontSize}" />
+
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center" />
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBox">
+                        <Border x:Name="LayoutRoot"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="Disabled" />
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="FocusStates">
+                                    <VisualState x:Name="Focused" />
+                                    <VisualState x:Name="Unfocused" />
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ScrollViewer x:Name="ScrollViewer"
+                                      HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}"
+                                      HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                      IsHorizontalRailEnabled="{TemplateBinding ScrollViewer.IsHorizontalRailEnabled}"
+                                      IsVerticalRailEnabled="{TemplateBinding ScrollViewer.IsVerticalRailEnabled}"
+                                      Padding="{TemplateBinding Padding}"
+                                      TabNavigation="{TemplateBinding TabNavigation}"
+                                      VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
+                                      VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}" 
+                                      ZoomMode="{TemplateBinding ScrollViewer.ZoomMode}">
+                                <ItemsPresenter />
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--VerticalFlipViewIndicator-->
+        <Style x:Key="VerticalFlipViewIndicatorItemStyle" 
+           TargetType="ListBoxItem">
+            <!--TODO fixme008 dynamic size or wrap items-->
+            <!--<Setter Property="Height" Value="48" />-->
+            <!--<Setter Property="Height" Value="16" />-->
+            <Setter Property="Height" Value="8" />
+            <Setter Property="Width" Value="6" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Grid Background="{TemplateBinding Background}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="PointerOver" />
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="SelectionStates">
+                                    <VisualState x:Name="Unselected" />
+                                    <VisualState x:Name="Selected">
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="fillColor"
+                                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                        BeginTime="00:00:00"
+                                                        Duration="0"
+                                                        To="Black" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="SelectedUnfocused">
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="fillColor"
+                                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                        BeginTime="00:00:00"
+                                                        Duration="0"
+                                                        To="Black" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="SelectedPressed">
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="fillColor" 
+                                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                        BeginTime="00:00:00"
+                                                        Duration="0"
+                                                        To="Black" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="SelectedPointerOver">
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="fillColor"
+                                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                        BeginTime="00:00:00"
+                                                        Duration="0"
+                                                        To="Black" />
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Rectangle x:Name="fillColor"
+                                   IsHitTestVisible="False"
+                                   Fill="Gray"
+                                   Margin="0,2,0,0" />
+                            <!--Margin="6 0"-->
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="VerticalFlipViewIndicatorStyle"
+               TargetType="local:FlipViewIndicator">
+            <Setter Property="ItemContainerStyle" Value="{StaticResource VerticalFlipViewIndicatorItemStyle}" />
+            <Setter Property="Width" Value="16" />
+            <Setter Property="Foreground" Value="{StaticResource ListBoxForegroundThemeBrush}" />
+            <Setter Property="Background" Value="{StaticResource ListBoxBackgroundThemeBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource ListBoxBorderThemeBrush}" />
+            <Setter Property="BorderThickness" Value="{StaticResource ListBoxBorderThemeThickness}" />
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+            <Setter Property="ScrollViewer.HorizontalScrollMode" Value="Enabled" />
+            <Setter Property="ScrollViewer.IsHorizontalRailEnabled" Value="True" />
+            <Setter Property="ScrollViewer.VerticalScrollMode" Value="Disabled" />
+            <Setter Property="ScrollViewer.IsVerticalRailEnabled" Value="True" />
+            <Setter Property="ScrollViewer.ZoomMode" Value="Disabled" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="TabNavigation" Value="Once" />
+            <Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}" />
+            <Setter Property="FontSize" Value="{StaticResource ControlContentThemeFontSize}" />
+
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical"
+                                VerticalAlignment="Center" />
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBox">
+                        <Border x:Name="LayoutRoot"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="Disabled" />
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="FocusStates">
+                                    <VisualState x:Name="Focused" />
+                                    <VisualState x:Name="Unfocused" />
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ScrollViewer x:Name="ScrollViewer"
+                                      HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}"
+                                      HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                      IsHorizontalRailEnabled="{TemplateBinding ScrollViewer.IsHorizontalRailEnabled}"
+                                      IsVerticalRailEnabled="{TemplateBinding ScrollViewer.IsVerticalRailEnabled}"
+                                      Padding="{TemplateBinding Padding}"
+                                      TabNavigation="{TemplateBinding TabNavigation}"
+                                      VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
+                                      VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}" 
+                                      ZoomMode="{TemplateBinding ScrollViewer.ZoomMode}">
+                                <ItemsPresenter />
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Page.Resources>
 
     <!--WinRT8.1 *only* Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"-->
@@ -296,6 +562,7 @@
         </FlipView>
         <local:FlipViewIndicator x:Name="MyFlipViewIndicatorUx"  
                                  FlipView="{Binding ElementName=NormalFlipView}"
+                                 Style="{StaticResource FlipViewIndicatorStyle}"
                                  Grid.Row="0"
                                  Grid.Column="2"
                                  Visibility="Visible"
@@ -325,11 +592,12 @@
         </FlipView>
         <local:FlipViewIndicator x:Name="MyVerticalFlipViewIndicatorUx" 
                                  FlipView="{Binding ElementName=VerticalFlipView}"
+                                 Style="{StaticResource VerticalFlipViewIndicatorStyle}"
                                  Grid.Row="1"
                                  Grid.Column="2"
                                  Visibility="Visible"
                                  VerticalAlignment="Center"
-                                 HorizontalAlignment="Center"
+                                 HorizontalAlignment="Right"
                                  Margin="8"/>
         
         <!--ScrollViewer-->
