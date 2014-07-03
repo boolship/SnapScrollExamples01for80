@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
@@ -11,12 +12,12 @@ namespace SnapScrollExamples01for80
         /// <summary>
         /// Calculated item sizes.
         /// </summary>
-        public static Dictionary<string,double> IndicatorItemSizes { get; set; }
+        public static Dictionary<string, Point> IndicatorItemSizes { get; set; }
 
         public FlipViewIndicator()
         {
-            IndicatorItemSizes = new Dictionary<string, double>();
-            DefaultStyleKey = typeof(FlipViewIndicator);
+            IndicatorItemSizes = new Dictionary<string, Point>();
+            DefaultStyleKey = typeof (FlipViewIndicator);
         }
 
         public FlipView FlipView
@@ -49,8 +50,13 @@ namespace SnapScrollExamples01for80
                 if (source != null)
                 {
                     var count = source.Count;
-                    var availableSize = indicator.FlipView.ActualWidth - count*2; // margin 2
-                    IndicatorItemSizes.Add(flipView.Name, Math.Floor(availableSize/count));
+                    var availableWidth = indicator.FlipView.ActualWidth - count*2; // margin 2
+                    var availableHeight = indicator.FlipView.ActualHeight - count*2; // margin 2
+                    IndicatorItemSizes.Add(flipView.Name, new Point
+                    {
+                        X = Math.Floor(availableWidth/count),
+                        Y = Math.Floor(availableHeight/count)
+                    });
                 }
             }
         }
