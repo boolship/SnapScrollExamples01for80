@@ -1,9 +1,9 @@
 ﻿
 namespace SnapScrollExamples01for80
 {
-    public class GridViewData
+    public class FlipViewData
     {
-        public GridViewData()
+        public FlipViewData()
         {
             string[] names =
             {
@@ -18,8 +18,6 @@ namespace SnapScrollExamples01for80
                 var item = new Item { Title = name };
                 Collection.Add(item);
             }
-
-
         }
 
         private readonly ItemCollection _collection = new ItemCollection();

@@ -8,72 +8,192 @@
     mc:Ignorable="d">
 
     <Page.Resources>
-        <!--Height="200" Width="400"-->
-        <DataTemplate x:Key="ListViewTileTemplate">
-            <Rectangle x:Name="ItemRectangle"
-                       Fill="Coral"
-                       Height="200"
-                       Width="400"
-                       />
-        </DataTemplate>
-        <!--<Setter Property="Height" Value="300" />
-        <Setter Property="Width" Value="500" />-->
-        <Style x:Key="MyListViewTileStyle"  TargetType="ListViewItem">
-            <Setter Property="FontFamily" Value="Segoe UI" />
-            <Setter Property="Background" Value="DarkOliveGreen" />
-            <Setter Property="Height" Value="300" />
-            <Setter Property="Width" Value="500" />
-            <Setter Property="Padding" Value="0" />
-            <Setter Property="Margin" Value="0,0,8,8" />
-            <Setter Property="HorizontalContentAlignment" Value="Center" />
-            <Setter Property="VerticalContentAlignment" Value="Center" />
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="TabNavigation" Value="Local" />
-        </Style>
+        <!-- ReSharper disable UnusedMember.Local -->
 
-        <!--Height="80" Width="160"-->
-        <DataTemplate x:Key="GridViewTileTemplate">
-            <Rectangle x:Name="ItemRectangle"
-                       Fill="Coral"
-                       Height="80"
-                       Width="160"
-                       />
-        </DataTemplate>
-        <!--<Setter Property="Height" Value="120" />
-        <Setter Property="Width" Value="200" />-->
+        <!--GridView-->
         <Style x:Key="MyGridViewTileStyle"  TargetType="GridViewItem">
             <Setter Property="FontFamily" Value="Segoe UI" />
             <Setter Property="Background" Value="DarkOliveGreen" />
-            <Setter Property="Height" Value="120" />
-            <Setter Property="Width" Value="200" />
             <Setter Property="Padding" Value="0" />
             <Setter Property="Margin" Value="0,0,8,8" />
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="TabNavigation" Value="Local" />
+            <Setter Property="Height" Value="80" />
+            <Setter Property="Width" Value="120" />
+            <!--<Setter Property="Height" Value="120" />
+            <Setter Property="Width" Value="200" />-->
         </Style>
+        <DataTemplate x:Key="MyGridViewTileTemplate">
+            <Rectangle x:Name="ItemRectangle"
+                       Fill="Coral"
+                       Height="40" Width="80"
+                       />
+            <!--Height="40" Width="80", Height="80" Width="160"-->
+        </DataTemplate>
+
+        <!--ListView-->
+        <Style x:Key="MyListViewTileStyle"  TargetType="ListViewItem">
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="Background" Value="DarkOliveGreen" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Margin" Value="0,0,8,8" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="TabNavigation" Value="Local" />
+            <Setter Property="Height" Value="200" />
+            <Setter Property="Width" Value="300" />
+            <!--<Setter Property="Height" Value="300" />
+            <Setter Property="Width" Value="500" />-->
+        </Style>
+        <DataTemplate x:Key="MyListViewTileTemplate">
+            <Rectangle x:Name="ItemRectangle"
+                       Fill="Coral"
+                       Height="160" Width="240"
+                       />
+            <!--Height="160" Width="240", Height="200" Width="400"-->
+        </DataTemplate>
+
+        <!--FlipView-->
+        <Style x:Key="MyFlipViewTileStyle" TargetType="FlipViewItem">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Background" Value="DarkOliveGreen"/>
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Margin" Value="0,0,8,8" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="TabNavigation" Value="Local" />
+            <!--<Setter Property="Height" Value="???"/>
+            <Setter Property="Width" Value="???"/>-->
+        </Style>
+        <DataTemplate x:Key="MyFlipViewTileTemplate">
+            <Rectangle x:Name="ItemRectangle"
+                       Fill="Coral"
+                       Height="140" Width="340"
+                       />
+            <!--Height="140" Width="340", Height="200" Width="400"-->
+        </DataTemplate>
+
+        <!--#1 ScrollViewer Border,Grid,ScrollContentPresenter-->
+        <Style x:Key="MyScrollViewerStyle" TargetType="ScrollViewer">
+            <Setter Property="Background" Value="{StaticResource ApplicationPageBackgroundThemeBrush}"/>
+            <Setter Property="BorderBrush" Value="DeepPink"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="ZoomMode" Value="Disabled"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
+
+            <!--TODO ItemsControl can not snap via style-->
+            <Setter Property="VerticalSnapPointsAlignment" Value="Near"/>
+            <Setter Property="VerticalSnapPointsType" Value="MandatorySingle"/>
+            <Setter Property="HorizontalSnapPointsAlignment" Value="Near"/>
+            <Setter Property="HorizontalSnapPointsType" Value="MandatorySingle"/>
+        </Style>
+
+        <!--#2 ItemsControl ItemsPresenter, ContentControl+StackPanel-->
+        <Style x:Key="MyItemsControlStyle" TargetType="ItemsControl">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Width" Value="300" />
+            <!--<Setter Property="Width" Value="500" />-->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ItemsControl">
+                        <ItemsPresenter x:Name="MyItemsPresenterTemplateUx"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <!--TODO ItemsControl can not snap via style-->
+                        <!--<ItemsStackPanel x:Name="MyItemsStackPanelTemplateUx"
+                                         Background="DarkOliveGreen"/>-->
+                        <VirtualizingStackPanel x:Name="MyVirtualizingStackPanelTemplateUx"
+                                                Background="DarkOliveGreen"/>
+                        <!--<WrapGrid x:Name="MyWrapGridTemplateUx"
+                                  Background="DarkOliveGreen"
+                                  HorizontalChildrenAlignment="Center"/>-->
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--#2 HorizontalItemsControl ItemsPresenter, ContentControl+StackPanel-->
+        <Style x:Key="MyHorizontalItemsControlStyle" TargetType="ItemsControl">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Height" Value="200" />
+            <!--Property="Height" Value="300"-->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ItemsControl">
+                        <ItemsPresenter x:Name="MyHorizontalItemsPresenterTemplateUx"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <!--TODO ItemsControl can not snap via style-->
+                        <!--<ItemsStackPanel x:Name="MyHorizontalItemsStackPanelTemplateUx"
+                                         Background="DarkOliveGreen"
+                                         Orientation="Horizontal"/>-->
+                        <VirtualizingStackPanel x:Name="MyHorizontalVirtualizingStackPanelTemplateUx"
+                                                Background="DarkOliveGreen"
+                                                Orientation="Horizontal"/>
+                        <!--<WrapGrid x:Name="MyHorizontalWrapGridTemplateUx"
+                                  Background="DarkOliveGreen"
+                                  VerticalChildrenAlignment="Center"/>-->
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--#3 Rectangle-->
+        <Style x:Key="MyRectangleStyle" TargetType="Rectangle">
+            <Setter Property="Fill" Value="Coral" />
+            <Setter Property="Height" Value="140" />
+            <Setter Property="Width" Value="240" />
+            <!--<Setter Property="Height" Value="200" />
+            <Setter Property="Width" Value="400" />-->
+
+            <Setter Property="Margin" Value="0,0,8,8" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <!-- ReSharper restore UnusedMember.Local -->
     </Page.Resources>
 
+    <!--WinRT8.1 *only* Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"-->
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <!-- ReSharper disable UnusedMember.Local -->
+
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <!--## Left to Right ## :: ## Up and Down ##
-            NormalGridView      :: NormalListView
-            HorizontalListView  :: VerticalGridView
-            ## Left to Right ## :: ## Up and Down ##
+        <!--NormalGridView     (L-R) :: NormalListView         (U-D) :: NormalFlipView (L-R)
+            VerticalGridView   (U-D) :: HorizontalListView     (L-R) :: VerticalFlipView (U-D)
+            NormalScrollViewer (U-D) :: HorizontalScrollViewer (L-R) :: SnappingScrollViewer (U-D)
+            TODO stuff:
+            SnappingGridView   (L-R) :: SnappingListView       (U-D) :: CustomFlipView (L-R)
         -->
-        <!--ShowsScrollingPlaceholders="False"-->
+        <!--GridView-->
+        <!--WinRT8.1 *only* ShowsScrollingPlaceholders="False"-->
         <GridView x:Name="NormalGridView"
                   Grid.Row="0"
                   Grid.Column="0"
-                  ItemTemplate="{StaticResource GridViewTileTemplate}"
+                  Visibility="Visible"
+                  ItemTemplate="{StaticResource MyGridViewTileTemplate}"
                   ItemContainerStyle="{StaticResource MyGridViewTileStyle}"
                   Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
                   BorderBrush="DeepPink"
@@ -81,15 +201,23 @@
                   
                   ScrollViewer.VerticalScrollBarVisibility="Auto"
                   ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                  ScrollViewer.VerticalScrollMode="Disabled"
+                  ScrollViewer.HorizontalScrollMode="Enabled"
                   SelectionMode="None">
-
+            <GridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapGrid Orientation="Vertical" />
+                </ItemsPanelTemplate>
+            </GridView.ItemsPanel>
         </GridView>
 
-        <!--ShowsScrollingPlaceholders="False"-->
+        <!--GridView-->
+        <!--WinRT8.1 *only* ShowsScrollingPlaceholders="False"-->
         <GridView x:Name="VerticalGridView"
                   Grid.Row="1"
-                  Grid.Column="1"
-                  ItemTemplate="{StaticResource GridViewTileTemplate}"
+                  Grid.Column="0"
+                  Visibility="Visible"
+                  ItemTemplate="{StaticResource MyGridViewTileTemplate}"
                   ItemContainerStyle="{StaticResource MyGridViewTileStyle}"
                   Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
                   BorderBrush="DeepPink"
@@ -107,26 +235,32 @@
             </GridView.ItemsPanel>
         </GridView>
 
-        <!--ShowsScrollingPlaceholders="False"-->
+        <!--ListView-->
+        <!--WinRT8.1 *only* ShowsScrollingPlaceholders="False"-->
         <ListView x:Name="NormalListView"
                   Grid.Row="0"
                   Grid.Column="1"
-                  ItemTemplate="{StaticResource ListViewTileTemplate}"
+                  Visibility="Visible"
+                  ItemTemplate="{StaticResource MyListViewTileTemplate}"
                   ItemContainerStyle="{StaticResource MyListViewTileStyle}"
                   Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
                   BorderBrush="DeepPink"
                   BorderThickness="2"
-                 
+                  
                   ScrollViewer.VerticalScrollBarVisibility="Auto"
                   ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                  ScrollViewer.VerticalScrollMode="Enabled"
+                  ScrollViewer.HorizontalScrollMode="Disabled"
                   SelectionMode="None">
         </ListView>
 
-        <!--ShowsScrollingPlaceholders="False"-->
+        <!--ListView-->
+        <!--WinRT8.1 *only* ShowsScrollingPlaceholders="False"-->
         <ListView x:Name="HorizontalListView"
                   Grid.Row="1"
-                  Grid.Column="0"
-                  ItemTemplate="{StaticResource ListViewTileTemplate}"
+                  Grid.Column="1"
+                  Visibility="Visible"
+                  ItemTemplate="{StaticResource MyListViewTileTemplate}"
                   ItemContainerStyle="{StaticResource MyListViewTileStyle}"                  
                   Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
                   BorderBrush="DeepPink"
@@ -142,7 +276,186 @@
                     <VirtualizingStackPanel Orientation="Horizontal"/>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
-
         </ListView>
+
+        <!--FlipView-->
+        <FlipView x:Name="NormalFlipView"
+                  Grid.Row="0"
+                  Grid.Column="2"
+                  Visibility="Visible"
+                  ItemTemplate="{StaticResource MyFlipViewTileTemplate}"
+                  ItemContainerStyle="{StaticResource MyFlipViewTileStyle}"
+                  Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                  BorderBrush="DeepPink"
+                  BorderThickness="2"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                  ScrollViewer.VerticalScrollMode="Disabled"
+                  ScrollViewer.HorizontalScrollMode="Enabled">
+        </FlipView>
+
+        <!--FlipView-->
+        <FlipView x:Name="VerticalFlipView"
+                  Grid.Row="1"
+                  Grid.Column="2"
+                  Visibility="Visible"
+                  ItemTemplate="{StaticResource MyFlipViewTileTemplate}"
+                  ItemContainerStyle="{StaticResource MyFlipViewTileStyle}"
+                  Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                  BorderBrush="DeepPink"
+                  BorderThickness="2"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                  ScrollViewer.VerticalScrollMode="Enabled"
+                  ScrollViewer.HorizontalScrollMode="Disabled">
+            <FlipView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </FlipView.ItemsPanel>
+        </FlipView>
+
+        <!--ScrollViewer-->
+        <ScrollViewer x:Name="NormalScrollViewer"
+                      Grid.Row="2"
+                      Grid.Column="0"
+                      Visibility="Visible"
+                      Style="{StaticResource MyScrollViewerStyle}">
+            <ItemsControl x:Name="MyItemsControlUx" 
+                          Style="{StaticResource MyItemsControlStyle}">
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <!--ScrollViewer-->
+        <ScrollViewer x:Name="HorizontalScrollViewer"
+                      Grid.Row="2"
+                      Grid.Column="1"
+                      Visibility="Visible"
+                      Style="{StaticResource MyScrollViewerStyle}"
+                      VerticalScrollMode="Disabled"
+                      HorizontalScrollMode="Enabled">
+            <ItemsControl x:Name="MyHorizontalItemsControlUx" 
+                          Style="{StaticResource MyHorizontalItemsControlStyle}">
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <!--SnappingScrollViewer1: ItemsControl Style="{StaticResource MyItemsControlStyle}" (fail)-->
+        <!--SnappingScrollViewer2: StackPanel (works)-->
+        <!--SnappingScrollViewer3: local:SnappingItemsControl implements IScrollSnapPointsInfo (works)-->
+        <ScrollViewer x:Name="SnappingScrollViewer1"
+                      Grid.Row="2"
+                      Grid.Column="2"
+                      Visibility="Visible"
+                      Style="{StaticResource MyScrollViewerStyle}">
+            <!--TODO can not snap via style-->
+            <ItemsControl x:Name="MySnappingItemsControlUx" 
+                          Style="{StaticResource MyItemsControlStyle}">
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <ScrollViewer x:Name="SnappingScrollViewer2"
+                      Grid.Row="2"
+                      Grid.Column="2"
+                      Visibility="Collapsed"
+                      Style="{StaticResource MyScrollViewerStyle}">
+            <StackPanel x:Name="MySnappingStackPanelUx">
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+            </StackPanel>
+        </ScrollViewer>
+
+        <ScrollViewer x:Name="SnappingScrollViewer3"
+                      Grid.Row="2"
+                      Grid.Column="2"
+                      Visibility="Collapsed"
+                      Style="{StaticResource MyScrollViewerStyle}">
+            <local:SnappingItemsControl x:Name="MyLocalSnappingItemsControlUx">
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+                <Rectangle Style="{StaticResource MyRectangleStyle}"/>
+            </local:SnappingItemsControl>
+        </ScrollViewer>
+
+        <!-- ReSharper restore UnusedMember.Local -->
     </Grid>
 </Page>
