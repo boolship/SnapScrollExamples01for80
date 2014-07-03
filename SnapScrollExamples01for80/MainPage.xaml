@@ -560,6 +560,7 @@
                   ScrollViewer.VerticalScrollMode="Disabled"
                   ScrollViewer.HorizontalScrollMode="Enabled">
         </FlipView>
+        
         <local:FlipViewIndicator x:Name="MyFlipViewIndicatorUx"  
                                  FlipView="{Binding ElementName=NormalFlipView}"
                                  Style="{StaticResource FlipViewIndicatorStyle}"
@@ -590,6 +591,7 @@
                 </ItemsPanelTemplate>
             </FlipView.ItemsPanel>
         </FlipView>
+        
         <local:FlipViewIndicator x:Name="MyVerticalFlipViewIndicatorUx" 
                                  FlipView="{Binding ElementName=VerticalFlipView}"
                                  Style="{StaticResource VerticalFlipViewIndicatorStyle}"
