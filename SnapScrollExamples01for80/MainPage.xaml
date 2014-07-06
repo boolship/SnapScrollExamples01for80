@@ -424,7 +424,6 @@
 
         </Style>
 
-
         <!--VerticalFlipViewIndicator, See: ListBoxItem styles and templates-->
         <Style x:Key="VerticalFlipViewIndicatorItemStyle" 
                TargetType="ListBoxItem">
