@@ -1,12 +1,7 @@
 ﻿
-using System;
-using System.Linq;
-using Windows.System;
-using Windows.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 
 namespace SnapScrollExamples01for80
@@ -67,7 +62,7 @@ namespace SnapScrollExamples01for80
         /// </summary>
         private void Workarounds()
         {
-            // TODO Configure ScrollViewer in style or code below. Snaps iff ScrollViewer contains StackPanel, SnappingItemsControl
+            //// TODO Configure ScrollViewer in style or code below. Snaps iff ScrollViewer contains StackPanel, SnappingItemsControl
             //var scrollViewer = FindScrollViewer(SnappingScrollViewer1);
             //if (scrollViewer != null)
             //{
@@ -97,7 +92,5 @@ namespace SnapScrollExamples01for80
 
             return null;
         }
-
     }
-
 }

@@ -169,8 +169,10 @@
         <!--FlipViewIndicator, See: ListBoxItem styles and templates-->
         <Style x:Key="FlipViewIndicatorItemStyle" 
                TargetType="ListBoxItem">
-            <Setter Property="Width" Value="98" />
-            <Setter Property="Height" Value="96" />
+            <Setter Property="Width" Value="8" />
+            <Setter Property="Height" Value="6" />
+            <!--<Setter Property="Width" Value="98" />
+            <Setter Property="Height" Value="96" />-->
             
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="TabNavigation" Value="Local" />
@@ -432,9 +434,11 @@
         <!--VerticalFlipViewIndicator, See: ListBoxItem styles and templates-->
         <Style x:Key="VerticalFlipViewIndicatorItemStyle" 
                TargetType="ListBoxItem">
-            <Setter Property="Width" Value="96" />
-            <Setter Property="Height" Value="98" />
-
+            <Setter Property="Width" Value="6" />
+            <Setter Property="Height" Value="8" />
+            <!--<Setter Property="Width" Value="96" />
+            <Setter Property="Height" Value="98" />-->
+            
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="TabNavigation" Value="Local" />
             <Setter Property="Padding" Value="8,10" />
@@ -818,12 +822,13 @@
                   ScrollViewer.HorizontalScrollMode="Enabled">
         </FlipView>
 
+        <!--98, 96, Height="116" or 8, 6, 16-->
         <local:FlipViewIndicator x:Name="MyFlipViewIndicatorUx"  
                                  FlipView="{Binding ElementName=NormalFlipView}"
                                  Style="{StaticResource FlipViewIndicatorStyle}"
-                                 Height="116"
                                  Grid.Row="0"
                                  Grid.Column="2"
+                                 
                                  Visibility="Visible"/>
         
         <!--FlipView-->
@@ -846,18 +851,15 @@
                 </ItemsPanelTemplate>
             </FlipView.ItemsPanel>
         </FlipView>
-        
+
+        <!--96, 98, Height="116" or 6, 8, 16-->
         <local:FlipViewIndicator x:Name="MyVerticalFlipViewIndicatorUx" 
                                  FlipView="{Binding ElementName=VerticalFlipView}"
                                  Style="{StaticResource VerticalFlipViewIndicatorStyle}"
-                                 Width="116"
                                  Grid.Row="1"
                                  Grid.Column="2"
-                                 Visibility="Visible"
                                  
-                                 VerticalAlignment="Center"
-                                 HorizontalAlignment="Left"
-                                 Margin="8"/>
+                                 Visibility="Visible"/>
         
         <!--ScrollViewer-->
         <ScrollViewer x:Name="NormalScrollViewer"

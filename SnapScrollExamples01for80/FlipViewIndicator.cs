@@ -39,7 +39,7 @@ namespace SnapScrollExamples01for80
             var flipView = (e.NewValue as FlipView);
             if (indicator != null && flipView != null)
             {
-                // sizing (code or xaml or style)
+                // horizontal or vertical sizing (code or xaml or style) 
                 //indicator.Height = 16;
                 //indicator.Width = 16;
 
@@ -77,16 +77,12 @@ namespace SnapScrollExamples01for80
                 switch (e.Key)
                 {
                     case VirtualKey.Right:
-                        var foo1 = 42;
                         break;
                     case VirtualKey.Left:
-                        var foo2 = 42;
                         break;
                     case VirtualKey.Up:
-                        var foo3 = 42;
                         break;
                     case VirtualKey.Down:
-                        var foo4 = 42;
                         break;
                 }
             }
