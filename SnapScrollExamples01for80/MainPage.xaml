@@ -169,8 +169,8 @@
         <!--FlipViewIndicator, See: ListBoxItem styles and templates-->
         <Style x:Key="FlipViewIndicatorItemStyle" 
                TargetType="ListBoxItem">
-            <Setter Property="Width" Value="8" />
-            <Setter Property="Height" Value="6" />
+            <Setter Property="Width" Value="98" />
+            <Setter Property="Height" Value="96" />
             
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="TabNavigation" Value="Local" />
@@ -348,14 +348,19 @@
             <Setter Property="Height" Value="16" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="ItemContainerStyle" Value="{StaticResource FlipViewIndicatorItemStyle}" />
-            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
-            <Setter Property="ScrollViewer.HorizontalScrollMode" Value="Disabled" />
-            <Setter Property="ScrollViewer.IsHorizontalRailEnabled" Value="False" />
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden" />
+            <Setter Property="ScrollViewer.HorizontalScrollMode" Value="Enabled" />
+            <!--<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+            <Setter Property="ScrollViewer.HorizontalScrollMode" Value="Disabled" />-->
+            <Setter Property="ScrollViewer.IsHorizontalRailEnabled" Value="True" />
             <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
             <Setter Property="ScrollViewer.VerticalScrollMode" Value="Disabled" />
             <Setter Property="ScrollViewer.IsVerticalRailEnabled" Value="False" />
             <Setter Property="ScrollViewer.ZoomMode" Value="Disabled" />
             <Setter Property="TabNavigation" Value="Once" />
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="8"/>
 
             <Setter Property="ItemsPanel">
                 <Setter.Value>
@@ -427,8 +432,8 @@
         <!--VerticalFlipViewIndicator, See: ListBoxItem styles and templates-->
         <Style x:Key="VerticalFlipViewIndicatorItemStyle" 
                TargetType="ListBoxItem">
-            <Setter Property="Width" Value="6" />
-            <Setter Property="Height" Value="8" />
+            <Setter Property="Width" Value="96" />
+            <Setter Property="Height" Value="98" />
 
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="TabNavigation" Value="Local" />
@@ -609,12 +614,17 @@
             <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
             <Setter Property="ScrollViewer.HorizontalScrollMode" Value="Disabled" />
             <Setter Property="ScrollViewer.IsHorizontalRailEnabled" Value="False" />
-            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
-            <Setter Property="ScrollViewer.VerticalScrollMode" Value="Disabled" />
-            <Setter Property="ScrollViewer.IsVerticalRailEnabled" Value="False" />
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden" />
+            <Setter Property="ScrollViewer.VerticalScrollMode" Value="Enabled" />
+            <!--<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
+            <Setter Property="ScrollViewer.VerticalScrollMode" Value="Disabled" />-->
+            <Setter Property="ScrollViewer.IsVerticalRailEnabled" Value="True" />
             <Setter Property="ScrollViewer.ZoomMode" Value="Disabled" />
             <Setter Property="TabNavigation" Value="Once" />
-
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="8"/>
+            
             <Setter Property="ItemsPanel">
                 <Setter.Value>
                     <ItemsPanelTemplate>
@@ -811,12 +821,10 @@
         <local:FlipViewIndicator x:Name="MyFlipViewIndicatorUx"  
                                  FlipView="{Binding ElementName=NormalFlipView}"
                                  Style="{StaticResource FlipViewIndicatorStyle}"
+                                 Height="116"
                                  Grid.Row="0"
                                  Grid.Column="2"
-                                 Visibility="Visible"
-                                 VerticalAlignment="Top"
-                                 HorizontalAlignment="Center"
-                                 Margin="8"/>
+                                 Visibility="Visible"/>
         
         <!--FlipView-->
         <FlipView x:Name="VerticalFlipView"
@@ -842,9 +850,11 @@
         <local:FlipViewIndicator x:Name="MyVerticalFlipViewIndicatorUx" 
                                  FlipView="{Binding ElementName=VerticalFlipView}"
                                  Style="{StaticResource VerticalFlipViewIndicatorStyle}"
+                                 Width="116"
                                  Grid.Row="1"
                                  Grid.Column="2"
                                  Visibility="Visible"
+                                 
                                  VerticalAlignment="Center"
                                  HorizontalAlignment="Left"
                                  Margin="8"/>

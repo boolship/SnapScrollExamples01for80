@@ -1,7 +1,12 @@
 ﻿
+using System;
+using System.Linq;
+using Windows.System;
+using Windows.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 
 namespace SnapScrollExamples01for80
@@ -92,6 +97,7 @@ namespace SnapScrollExamples01for80
 
             return null;
         }
+
     }
 
 }

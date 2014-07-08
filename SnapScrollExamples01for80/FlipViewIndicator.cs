@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Windows.Foundation;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
@@ -18,6 +20,7 @@ namespace SnapScrollExamples01for80
         {
             IndicatorItemSizes = new Dictionary<string, Point>();
             DefaultStyleKey = typeof (FlipViewIndicator);
+
         }
 
         public FlipView FlipView
@@ -36,6 +39,10 @@ namespace SnapScrollExamples01for80
             var flipView = (e.NewValue as FlipView);
             if (indicator != null && flipView != null)
             {
+                // sizing (code or xaml or style)
+                //indicator.Height = 16;
+                //indicator.Width = 16;
+
                 // binding
                 indicator.ItemsSource = flipView.ItemsSource;
                 var binding = new Binding
@@ -45,7 +52,8 @@ namespace SnapScrollExamples01for80
                     Path = new PropertyPath("SelectedItem")
                 };
                 indicator.SetBinding(SelectedItemProperty, binding);
-
+                indicator.SelectionChanged += indicator_SelectionChanged;
+                indicator.KeyUp += indicator_KeyUp;
                 // item sizes
                 var source = flipView.ItemsSource as ItemCollection;
                 if (source != null)
@@ -61,5 +69,37 @@ namespace SnapScrollExamples01for80
                 }
             }
         }
+
+        static void indicator_KeyUp(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (e != null)
+            {
+                switch (e.Key)
+                {
+                    case VirtualKey.Right:
+                        var foo1 = 42;
+                        break;
+                    case VirtualKey.Left:
+                        var foo2 = 42;
+                        break;
+                    case VirtualKey.Up:
+                        var foo3 = 42;
+                        break;
+                    case VirtualKey.Down:
+                        var foo4 = 42;
+                        break;
+                }
+            }
+        }
+
+        private static void indicator_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var listBox = sender as ListBox;
+            if (listBox != null && e != null && e.AddedItems.Count > 0)
+            {
+                listBox.ScrollIntoView(e.AddedItems.First());
+            } 
+        }
+
     }
 }
